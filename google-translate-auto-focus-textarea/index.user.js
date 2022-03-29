@@ -5,6 +5,7 @@
 // @version      0.1
 // @license      MIT
 // @author       fang5502
+// @source       https://github.com/fang5502/tampermonkey-scripts
 // @match        *://translate.google.com.tw/*
 // @icon         https://ssl.gstatic.com/translate/favicon.ico
 // @grant        none

@@ -5,6 +5,7 @@
 // @version      0.1
 // @license      MIT
 // @author       fang5502
+// @source       https://github.com/fang5502/tampermonkey-scripts
 // @match        *://vclass-course.voicetube.com/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant        none
