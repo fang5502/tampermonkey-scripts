@@ -25,4 +25,27 @@
       });
     }
   });
+
+  let isDelay = false;
+  /**
+   * 左邊發音
+   */
+  function speakLeftText() {
+    if (isDelay) return;
+    document.querySelectorAll('button')[28].click();
+    setTimeout(() => {
+      isDelay = false;
+    }, 500);
+    isDelay = true;
+  }
+
+  document.addEventListener('keydown', (event) => {
+    const key = event.key;
+    const include = ['e'].includes(key);
+    switch ((event.metaKey && include && (event.preventDefault(), event.stopPropagation()), key)) {
+      case 'e':
+        speakLeftText();
+        break;
+    }
+  });
 })();
