@@ -2,7 +2,7 @@
 // @name         google translate auto focus textarea
 // @description  google translate auto focus textarea
 // @namespace    fang5502
-// @version      0.1
+// @version      0.2
 // @license      MIT
 // @author       fang5502
 // @source       https://github.com/fang5502/tampermonkey-scripts
