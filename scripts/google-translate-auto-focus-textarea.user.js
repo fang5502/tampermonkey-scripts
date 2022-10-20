@@ -32,7 +32,11 @@
    */
   function speakLeftText() {
     if (isDelay) return;
-    document.querySelectorAll('button')[28].click();
+    document
+      .querySelector(
+        '.VfPpkd-Bz112c-LgbsSe.VfPpkd-Bz112c-LgbsSe-OWXEXe-e5LLRc-SxQuSe.fzRBVc.tmJved.mN1ivc.SSgGrd.VfPpkd-ksKsZd-mWPk3d.VfPpkd-ksKsZd-mWPk3d-OWXEXe-ZNMTqd',
+      )
+      .click();
     setTimeout(() => {
       isDelay = false;
     }, 500);
@@ -40,12 +44,13 @@
   }
 
   document.addEventListener('keydown', (event) => {
-    const key = event.key;
-    const include = ['e'].includes(key);
-    switch ((event.metaKey && include && (event.preventDefault(), event.stopPropagation()), key)) {
-      case 'e':
-        speakLeftText();
-        break;
-    }
+    [
+      {
+        key(event) {
+          return event.metaKey && event.key === 'e';
+        },
+        execute: speakLeftText,
+      },
+    ].some((element) => element.key(event) && (element.execute(), true));
   });
 })();
