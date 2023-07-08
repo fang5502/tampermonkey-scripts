@@ -2,7 +2,7 @@
 // @name         google translate auto focus textarea
 // @description  google translate auto focus textarea
 // @namespace    fang5502
-// @version      0.4
+// @version      0.5
 // @license      MIT
 // @author       fang5502
 // @source       https://github.com/fang5502/tampermonkey-scripts
@@ -33,7 +33,7 @@
   function speakLeftText() {
     if (isDelay) return;
     const target = document
-      .querySelector('.VfPpkd-Bz112c-LgbsSe.VfPpkd-Bz112c-LgbsSe-OWXEXe-e5LLRc-SxQuSe.fzRBVc.tmJved.mN1ivc.rrPCWc.VfPpkd-ksKsZd-mWPk3d.VfPpkd-ksKsZd-mWPk3d-OWXEXe-ZNMTqd');
+      .querySelector('.VfPpkd-Bz112c-LgbsSe.VfPpkd-Bz112c-LgbsSe-OWXEXe-e5LLRc-SxQuSe.fzRBVc.tmJved.mN1ivc.rrPCWc');
     if (target) {
       target.click();
     }
