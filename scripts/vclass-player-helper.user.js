@@ -2,7 +2,7 @@
 // @name         vclass player helper
 // @description  Set the player of vclass to forward and backward as 3 sec
 // @namespace    fang5502
-// @version      0.1
+// @version      0.2
 // @license      MIT
 // @author       fang5502
 // @source       https://github.com/fang5502/tampermonkey-scripts
@@ -13,6 +13,7 @@
 
 (function () {
   'use strict';
+  // Event triggered when a key is pressed
   document.addEventListener('keydown', (event) => {
     const key = event.key;
     const include = ['ArrowLeft', 'ArrowRight'].includes(key);
@@ -23,6 +24,39 @@
       case 'ArrowRight':
         window.player.currentTime += 3;
         break;
+    }
+  });
+
+  // Detect long press of the space key for more than 0.5 seconds and play the video at double speed
+  let timer = null;
+  const triggerKey = ' ';
+  let backupSpeed = 1;
+  let isPress = false;
+  document.addEventListener('keydown', (event) => {
+    if (event.key === triggerKey) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (timer !== null) return;
+
+      timer = setTimeout(() => {
+        isPress = true;
+        backupSpeed = window.player.speed;
+        window.player.speed = 2;
+      }, 500);
+    }
+  });
+  document.addEventListener('keyup', (event) => {
+    if (event.key === triggerKey) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      clearTimeout(timer);
+      timer = null;
+
+      if (isPress) {
+        isPress = false;
+        window.player.speed = backupSpeed;
+      }
     }
   });
 })();
