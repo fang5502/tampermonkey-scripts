@@ -2,7 +2,7 @@
 // @name         vclass player helper
 // @description  Set the player of vclass to forward and backward as 3 sec
 // @namespace    fang5502
-// @version      0.2
+// @version      0.3
 // @license      MIT
 // @author       fang5502
 // @source       https://github.com/fang5502/tampermonkey-scripts
@@ -31,7 +31,8 @@
   let timer = null;
   const triggerKey = ' ';
   let backupSpeed = 1;
-  let isPress = false;
+  let isPaused = false;
+  let isLongPress = false;
   document.addEventListener('keydown', (event) => {
     if (event.key === triggerKey) {
       event.preventDefault();
@@ -39,9 +40,12 @@
       if (timer !== null) return;
 
       timer = setTimeout(() => {
-        isPress = true;
+        isLongPress = true;
         backupSpeed = window.player.speed;
         window.player.speed = 2;
+
+        isPaused = window.player.paused;
+        if (isPaused) window.player.play();
       }, 500);
     }
   });
@@ -53,9 +57,13 @@
       clearTimeout(timer);
       timer = null;
 
-      if (isPress) {
-        isPress = false;
+      if (isLongPress) {
+        isLongPress = false;
         window.player.speed = backupSpeed;
+        if (isPaused) window.player.pause();
+      } else {
+        if (window.player.playing) player.pause();
+        else player.play();
       }
     }
   });
